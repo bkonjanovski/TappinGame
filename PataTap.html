@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Borjan Konjanovski - July 2020 -->
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <title>Circles - bkonjanovski</title>
+  <script type="text/javascript" src="assets/js/lib/paper-full.js">
+  </script>
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.core.min.js">
+   </script>
+  <script type="text/paperscript" canvas="myCanvas">
+    var circles = [];
+    function onKeyDown(event) {
+
+      var maxPoint = new Point(view.size.width, view.size.height);
+      var randomPoint = Point.random();
+      var point = maxPoint * randomPoint;
+      var newCircle = new Path.Circle(point, 500);
+
+      switch(event.key) {
+        case "a":
+          playSound("bubbles");
+          newCircle.fillColor = "purple";
+          break;
+
+        case "b":
+          playSound("clay");
+          newCircle.fillColor = "blue";
+          break;
+
+        case "c":
+          playSound("confetti");
+          newCircle.fillColor = "red";
+          break;
+          
+        case "d":
+          playSound("corona");
+          newCircle.fillColor = "yellow";
+          break;
+
+        case "e":
+          playSound("dotted-spiral");
+          newCircle.fillColor = "orange";
+          break;
+          
+        case "f":
+          playSound("flash-1");
+          newCircle.fillColor = "green";
+          break;
+
+        case "g":
+          playSound("flash-2");
+          newCircle.fillColor = "white";
+          break;
+          
+        case "h":
+          playSound("flash-3");
+          newCircle.fillColor = "darkblue";
+          break;
+
+        case "i":
+          playSound("glimmer");
+          newCircle.fillColor = "pink";
+          break;
+          
+        case "j":
+          playSound("moon");
+          newCircle.fillColor = "lightgray";
+          break;
+
+        case "k":
+          playSound("pinwheel");
+          newCircle.fillColor = "darkblue";
+          break;
+          
+        case "l":
+          playSound("piston-1");
+          newCircle.fillColor = "blueviolet";
+          break;
+
+        case "m":
+          playSound("piston-2");
+          newCircle.fillColor = "brown";
+          break;
+
+        case "n":
+          playSound("piston-3");
+          newCircle.fillColor = "cyan";
+          break;
+
+        case "o":
+          playSound("prism-1");
+          newCircle.fillColor = "firebrick";
+          break;
+          
+        case "p":
+          playSound("prism-2");
+          newCircle.fillColor = "ghostwhite";
+          break;
+
+        case "q":
+          playSound("prism-3");
+          newCircle.fillColor = "indigo";
+          break;
+          
+        case "r":
+          playSound("splits");
+          newCircle.fillColor = "lemonchiffon";
+          break;
+
+        case "s":
+          playSound("squiggle");
+          newCircle.fillColor = "olive";
+          break;
+          
+        case "t":
+          playSound("strike");
+          newCircle.fillColor = "oldlace";
+          break;
+
+          case "u":
+          playSound("suspension");
+          newCircle.fillColor = "peru";
+          break;
+          
+        case "v":
+          playSound("timer");
+          newCircle.fillColor = "tan";
+          break;
+
+        case "w":
+          playSound("ufo");
+          newCircle.fillColor = "thistle";
+          break;
+          
+          case "x":
+          playSound("veil");
+          newCircle.fillColor = "tomato";
+          break;
+
+        case "y":
+          playSound("wipe");
+          newCircle.fillColor = "yellowgreen";
+          break;
+
+        case "z":
+          playSound("zig-zag");
+          newCircle.fillColor = "maroon";
+          break;
+
+          default:
+          return 0;
+      }
+      
+      circles.push(newCircle);}
+
+    function onFrame(event) {
+      for(var i=0;i<circles.length;i++) {
+        circles[i].fillColor.hue += 1;
+        circles[i].scale(.9);
+      }
+    }
+
+    function playSound(soundName) {
+      var sound = new Audio('assets/sounds/'+soundName+'.mp3');
+      sound.play();
+    }
+  </script>
+</head>
+<body>
+
+  <canvas id="myCanvas" resize></canvas>
+
+</body>
+</html>
